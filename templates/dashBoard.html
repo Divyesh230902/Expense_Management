@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <!--Navigation Bar which displays user's profile and main page with table-->
+    <table>
+        <tr>
+            <td><a href="/"><button>Home</button></a></td>
+            <td><a href="/dashboard"><button>Dashboard</button></a></td>
+            <td><a href="/logout"><button>Logout</button></a></td>
+        </tr>
+        <form action="/get_salary" method="post">
+            <tr>
+                <td>Salary</td>
+                <td><input type="text" name="salary" placeholder="Enter your salary"></td>
+                <td><input type="submit" value="Get Chart"></td>
+            </tr>
+        </form>
+        <tr>
+            <td>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+    </table>
+
+    {% if salary%}
+    <table>
+        <tr>
+            <th style="border: 1px solid black;
+            border-radius: 10px;">your salary</th>
+            <th style="border: 1px solid black;
+            border-radius: 10px;">savings</th>
+            <th style="border: 1px solid black;
+            border-radius: 10px;">Budget(per day)</th>
+            <th style="border: 1px solid black;
+            border-radius: 10px;">Net Amount</th>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black;
+            border-radius: 10px;">{{salary}}</td>
+            <td style="border: 1px solid black;
+            border-radius: 10px;">{{save}}</td>
+            <td style="border: 1px solid black;
+            border-radius: 10px;">{{budget}}</td>
+            <td style="border: 1px solid black;
+            border-radius: 10px;">{{net}}</td>
+    </table>
+    {% endif %}
+
+</body>
+
+</html>

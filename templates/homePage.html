@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense management</title>
+</head>
+
+<body>
+    <h3>Welcome to Expense management system</h3>
+    <form action="/register" method="post">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" name="fname" placeholder="Enter your first name"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" name="lname" placeholder="Enter your lirst name"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" placeholder="Enter your email"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" placeholder="Enter your password"></td>
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" name="confirm_password" placeholder="Confirm your password"></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Register"></td>
+            </tr>
+            <tr>
+                <td>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </td>
+        </table>
+    </form>
+    <p>If already a user</p>
+    <tr>
+        <td><a href="/login"><button>Login</button></a></td>
+    </tr>
+</body>
+
+</html>
